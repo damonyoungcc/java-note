@@ -1,3 +1,7 @@
+/**
+ * 数组在初始化后大小不可变
+ * 数组只能按索引顺序存取
+ */
 package com.github.note.o3collection;
 
 import java.util.Arrays;
