@@ -3,7 +3,7 @@ package com.github.note.o3collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class mapDemo {
+public class MapDemo {
     static Map<Integer, Student> map = new HashMap<>();
 
     public static void main(String[] args) {

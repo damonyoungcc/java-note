@@ -3,22 +3,22 @@
  */
 package com.github.note.o2objectOriented;
 
-public class Cat {
+public class ReloadMethod {
     int age = 2;
     String name = " ";
 
     // 创建一直默认的猫，1岁，名字叫张三
-    Cat() {
+    ReloadMethod() {
         this("张三");
     }
 
     // 创建一只默认的猫，1岁，名字叫name指定的名字
-    Cat(String name) {
+    ReloadMethod(String name) {
         this(1, name);
     }
 
     // 创建age和name指定的猫
-    public Cat(int age, String name) {
+    public ReloadMethod(int age, String name) {
         this.name = name;
         this.age = age;
     }
@@ -28,7 +28,7 @@ public class Cat {
     }
 
     public static void main(String[] args) {
-        Cat c = new Cat();
+        ReloadMethod c = new ReloadMethod();
         System.out.println(c.name);
         System.out.println(c.age);
         c.meow();

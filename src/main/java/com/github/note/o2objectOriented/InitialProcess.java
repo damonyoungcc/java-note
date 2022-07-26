@@ -3,7 +3,7 @@
  */
 package com.github.note.o2objectOriented;
 
-public class Dog {
+public class InitialProcess {
     // 1、静态成员初始化
     static int a = 123;
 
@@ -31,12 +31,12 @@ public class Dog {
     }
 
     // 5、 执行构造函数
-    public Dog(int age, String name) {
+    public InitialProcess(int age, String name) {
         this.age = age;
         this.name = name;
     }
 
-    Dog() {
+    InitialProcess() {
         this.name = name;
         this.age = age;
     }
@@ -45,8 +45,8 @@ public class Dog {
     }
 
     public static void main(String[] args) {
-        new Dog(2, "ABC");
-        new Dog();
+        new InitialProcess(2, "ABC");
+        new InitialProcess();
     }
 
 
