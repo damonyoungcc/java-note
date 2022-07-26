@@ -6,6 +6,7 @@ public class ArrayListDemo {
 
     static List<Integer> list = new ArrayList();
     static Collection<Integer> collection = new ArrayList<>();
+    static List<Person> equalsDemoList = new ArrayList<>();
 
     public static void main(String[] args) {
         createArrayList();
@@ -13,6 +14,7 @@ public class ArrayListDemo {
         forEachArrayList();
         shiftToArray();
         shiftToArrayList();
+        equalsDemo();
     }
 
     // 公共打印函数
@@ -74,7 +76,7 @@ public class ArrayListDemo {
         }
     }
 
-    // List 和 Array转换
+    // List 转换成 Array
     static void shiftToArray() {
         // 这种方法会丢失类型信息
         System.out.println(Arrays.toString(list.toArray()));
@@ -85,9 +87,44 @@ public class ArrayListDemo {
 
     }
 
+    // Array 转换成ArrayList
     static void shiftToArrayList() {
         Integer[] i = {1, 2, 3, 4, 5,};
         List list = Arrays.asList(i);
         System.out.println(Arrays.toString(list.toArray()));
+    }
+
+    // contains 和 equals判断
+    static void equalsDemo() {
+        for (int i = 0; i < 4; i++) {
+            equalsDemoList.add(new Person(i, "哈哈哈"));
+        }
+        System.out.println(equalsDemoList.contains(new Person(1, "哈哈哈")));
+        System.out.println(equalsDemoList.contains(new Person(1, "嘿嘿嘿")));
+        System.out.println(equalsDemoList.indexOf(new Person(1, "哈哈哈")));
+    }
+}
+
+
+class Person {
+    int age;
+    String name;
+
+    public Person(int age, String name) {
+        this.age = age;
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return age == person.age && Objects.equals(name, person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(age, name);
     }
 }
