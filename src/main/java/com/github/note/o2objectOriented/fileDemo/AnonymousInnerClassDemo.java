@@ -11,7 +11,7 @@ public class AnonymousInnerClassDemo {
         Path projectDir = Paths.get(System.getProperty("user.dir"));
         Path testRootDir = projectDir.resolve(".idea");
         if (!testRootDir.toFile().isDirectory()) {
-            throw new IllegalStateException(testRootDir.toAbsolutePath().toString() + "不存在！");
+            throw new IllegalStateException(testRootDir.toAbsolutePath() + "不存在！");
         }
         System.out.println(filter(testRootDir, ".xml"));
 
@@ -21,7 +21,7 @@ public class AnonymousInnerClassDemo {
         List<String> names = new ArrayList<>();
         Files.walkFileTree(rootDirectory, new SimpleFileVisitor<Path>() {
             @Override
-            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
                 if (file.getFileName().toString().endsWith(extension)) {
                     names.add(file.getFileName().toString());
                 }
