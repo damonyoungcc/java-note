@@ -6,7 +6,7 @@ import java.util.List;
 
 public class IteratorDemo {
     public static void main(String[] args) {
-        ReverseList<Integer> list = new ReverseList();
+        ReverseList<Integer> list = new ReverseList<>();
         for (int i = 0; i < 10; i++) {
             list.add(i);
         }
@@ -20,7 +20,7 @@ public class IteratorDemo {
 
 class ReverseList<T> implements Iterable<T> {
 
-    private List<T> list = new ArrayList<>();
+    private final List<T> list = new ArrayList<>();
 
     public void add(T t) {
         list.add(t);

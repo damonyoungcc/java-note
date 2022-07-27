@@ -13,30 +13,33 @@ public class ExceptionDemo {
 }
 
 class TryCatchDemo {
+    final private static String s = "中文";
+
     public static void main(String[] args) {
-        byte[] bs = toGBK("中文");
+        byte[] bs = toGBK();
         System.out.println(Arrays.toString(bs));
     }
 
     // toGBK 内部消化异常
-    static byte[] toGBK(String s) {
+    static byte[] toGBK() {
         try {
             return s.getBytes("GBK");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace(); // 打印异常栈
-            System.out.println(e);
             return s.getBytes();
         }
     }
 }
 
 class ThrowExceptionDemo {
+    final private static String s = "中文";
+
     public static void main(String[] args) throws UnsupportedEncodingException {
-        byte[] bs = toGBK("中文");
+        byte[] bs = toGBK();
         System.out.println(Arrays.toString(bs));
     }
 
-    static byte[] toGBK(String s) throws UnsupportedEncodingException {
+    static byte[] toGBK() throws UnsupportedEncodingException {
         return s.getBytes("GBK");
     }
 }
