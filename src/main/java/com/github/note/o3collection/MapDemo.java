@@ -37,22 +37,23 @@ public class MapDemo {
     }
 
     /**
-     *  1. 作为 key 的对象必须正确覆写 equals() 方法，相等的两个 key 实例调用 equals() 必须返回 true
-     *  2. 作为 key 的对象还必须正确覆写 hashCode() 方法
+     * 1. 作为 key 的对象必须正确覆写 equals() 方法，相等的两个 key 实例调用 equals() 必须返回 true
+     * 2. 作为key 的对象还必须正确覆写 hashCode() 方法
      */
+
+    static class Student {
+        int age;
+        String name;
+
+        public Student(int age, String name) {
+            this.age = age;
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "Student{" + "age=" + age + ", name='" + name + '\'' + '}';
+        }
+    }
 }
 
-class Student {
-    int age;
-    String name;
-
-    public Student(int age, String name) {
-        this.age = age;
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" + "age=" + age + ", name='" + name + '\'' + '}';
-    }
-}

@@ -26,21 +26,21 @@ public class StreamMapDemo {
     }
 
     static void filterWorkDay() {
-        Stream.generate(new LocalDateSupplier())
-                .limit(31)
-                .filter(ldt -> ldt.getDayOfWeek() == DayOfWeek.SATURDAY || ldt.getDayOfWeek() == DayOfWeek.SUNDAY)
-                .forEach(System.out::println);
+        Stream.generate(new LocalDateSupplier()).limit(31).filter(
+                ldt -> ldt.getDayOfWeek() == DayOfWeek.SATURDAY || ldt.getDayOfWeek() == DayOfWeek.SUNDAY).forEach(
+                System.out::println);
+    }
+
+    static class LocalDateSupplier implements Supplier<LocalDate> {
+        LocalDate start = LocalDate.of(2022, 7, 27);
+        int n = -1;
+
+        @Override
+        public LocalDate get() {
+            n++;
+            return start.plusDays(n);
+        }
     }
 }
 
 
-class LocalDateSupplier implements Supplier<LocalDate> {
-    LocalDate start = LocalDate.of(2022, 7, 27);
-    int n = -1;
-
-    @Override
-    public LocalDate get() {
-        n++;
-        return start.plusDays(n);
-    }
-}

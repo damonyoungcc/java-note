@@ -38,8 +38,7 @@ public class CreateStreamDemo {
     }
 
     /**
-     * 基于Supplier创建，下面Supplier<Integer>模拟了一个无限序列
-     * 若用List表示，在int范围内会占用巨大的内存
+     * 基于Supplier创建，下面Supplier<Integer>模拟了一个无限序列 若用List表示，在int范围内会占用巨大的内存
      * Stream几乎不占空间，因为每个元素都是实时计算出来的，用的时候再算。
      */
     static void createStreamBySupplier() {
@@ -53,14 +52,15 @@ public class CreateStreamDemo {
         Stream<String> s = p.splitAsStream("Hello World, Hello Java!");
         s.forEach(System.out::println);
     }
-}
 
-class NatualSupplier implements Supplier<Integer> {
-    int n = 0;
+    static class NatualSupplier implements Supplier<Integer> {
+        int n = 0;
 
-    @Override
-    public Integer get() {
-        n++;
-        return n;
+        @Override
+        public Integer get() {
+            n++;
+            return n;
+        }
     }
 }
+

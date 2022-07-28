@@ -16,37 +16,39 @@ public class IteratorDemo {
         }
     }
 
-}
+    static class ReverseList<T> implements Iterable<T> {
 
-class ReverseList<T> implements Iterable<T> {
+        private final List<T> list = new ArrayList<>();
 
-    private final List<T> list = new ArrayList<>();
-
-    public void add(T t) {
-        list.add(t);
-    }
-
-    @Override
-    public Iterator<T> iterator() {
-        return new ReverseIterator(list.size());
-    }
-
-    class ReverseIterator implements Iterator<T> {
-        int index;
-
-        ReverseIterator(int index) {
-            this.index = index;
+        public void add(T t) {
+            list.add(t);
         }
 
         @Override
-        public boolean hasNext() {
-            return index > 0;
+        public Iterator<T> iterator() {
+            return new ReverseIterator(list.size());
         }
 
-        @Override
-        public T next() {
-            index--;
-            return ReverseList.this.list.get(index);
+        class ReverseIterator implements Iterator<T> {
+            int index;
+
+            ReverseIterator(int index) {
+                this.index = index;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return index > 0;
+            }
+
+            @Override
+            public T next() {
+                index--;
+                return ReverseList.this.list.get(index);
+            }
         }
     }
+
 }
+
+

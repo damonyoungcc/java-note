@@ -11,7 +11,8 @@ public class FileFilter {
         Path projectDir = Paths.get(System.getProperty("user.dir"));
         Path testRootDir = projectDir.resolve(".idea");
         if (!testRootDir.toFile().isDirectory()) {
-            throw new IllegalStateException(testRootDir.toAbsolutePath() + "不存在！");
+            throw new IllegalStateException(
+                    testRootDir.toAbsolutePath() + "不存在！");
         }
 
         List<String> filteredFileNames = filter(testRootDir, ".xml");
