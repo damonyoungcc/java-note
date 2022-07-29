@@ -17,16 +17,10 @@ public class Main {
     }
 
     public static String readFileContent() throws IOException {
-        Stream<String> entries =
-                Stream.of(System.getProperty("java.class.path").split(File.pathSeparator));
-        File targetClassDir =
-                entries.filter(
-                                entry ->
-                                        entry.endsWith("target/classes")
-                                                || entry.endsWith("target\\classes"))
-                        .findFirst()
-                        .map(File::new)
-                        .orElseThrow(IllegalStateException::new);
+        Stream<String> entries = Stream.of(System.getProperty("java.class.path").split(File.pathSeparator));
+        File targetClassDir = entries.filter(
+                entry -> entry.endsWith("target/classes") || entry.endsWith("target\\classes")).findFirst().map(
+                File::new).orElseThrow(IllegalStateException::new);
         File mainDotJava = new File(targetClassDir, "../../src/main/java/com/github/note/o1breakpoint/Main.java");
 
         return IOUtils.toString(new FileReader(mainDotJava)).replaceAll("\\s", "");
