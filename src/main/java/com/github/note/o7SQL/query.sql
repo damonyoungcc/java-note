@@ -40,3 +40,22 @@ SELECT ID, GENDER, NAME, SCORE FROM STUDENTS ORDER BY SCORE DESC LIMIT 3 OFFSET 
 
 
 -- 聚合查询
+-- COUNT(*)表示查询所有列的行数 num为设置的别名
+SELECT COUNT(*) num FROM STUDENTS;
+-- 加 WHERE
+SELECT COUNT(*) boys FROM STUDENTS WHERE gender = 'M'
+-- 聚合查询计算男生平均成绩
+SELECT AVG(SCORE) average FROM STUDENTS WHERE GENDER = 'M';
+-- 分组
+SELECT COUNT(*) num FROM STUDENTS GROUP BY CLASS_ID;
+-- 分组并把class_id列也放入结果集中
+SELECT CLASS_ID, COUNT(*) num FROM STUDENTS GROUP BY CLASS_ID;
+
+
+-- 链接查询
+-- 选出students表所有学生信息
+SELECT s.id, s.name, s.class_id, s.gender, s.score FROM STUDENTS s;
+-- class_id 缺少对应班级的name列
+SELECT s.id, s.name, s.class_id, c.name class_name, s.gender, s.score FROM STUDENTS s INNER JOIN CLASSES C on s
+                                                                                                                  .CLASS_ID = C.ID;
+
