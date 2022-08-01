@@ -56,6 +56,7 @@ SELECT CLASS_ID, COUNT(*) num FROM STUDENTS GROUP BY CLASS_ID;
 -- 选出students表所有学生信息
 SELECT s.id, s.name, s.class_id, s.gender, s.score FROM STUDENTS s;
 -- class_id 缺少对应班级的name列
-SELECT s.id, s.name, s.class_id, c.name class_name, s.gender, s.score FROM STUDENTS s INNER JOIN CLASSES C on s
-                                                                                                                  .CLASS_ID = C.ID;
+SELECT s.id, s.name, s.class_id, c.name class_name, s.gender, s.score
+FROM STUDENTS s
+         INNER JOIN CLASSES C on s.CLASS_ID = C.ID;
 
