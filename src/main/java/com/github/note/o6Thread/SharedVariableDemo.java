@@ -13,6 +13,11 @@ public class SharedVariableDemo {
     }
 
     private static void modifySharedVariable() {
+        try {
+            Thread.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         // 不是一个原子操作
         // 取 i 的值
         // 把 i 的值加1
