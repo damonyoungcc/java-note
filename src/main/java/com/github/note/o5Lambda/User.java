@@ -1,4 +1,4 @@
-package com.github.note;
+package com.github.note.o5Lambda;
 
 
 import java.util.ArrayList;
