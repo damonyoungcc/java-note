@@ -26,9 +26,9 @@ public class CacheClassDecorator {
     }
 
     public static class CacheKey {
-        private Object thisObject;
-        private String methodName;
-        private Object[] arguments;
+        private final Object thisObject;
+        private final String methodName;
+        private final Object[] arguments;
 
         public CacheKey(Object thisObject, String methodName, Object[] arguments) {
             this.thisObject = thisObject;
@@ -56,8 +56,8 @@ public class CacheClassDecorator {
 
 
     public static class CacheValue {
-        private Object value;
-        private long time;
+        private final Object value;
+        private final long time;
 
         public CacheValue(Object value, long time) {
             this.value = value;
@@ -66,7 +66,11 @@ public class CacheClassDecorator {
     }
 
     public static class CacheAdvisor {
-        private static ConcurrentHashMap<CacheKey, CacheValue> cacheMap = new ConcurrentHashMap();
+        private static final ConcurrentHashMap<CacheKey, CacheValue> cacheMap;
+
+        static {
+            cacheMap = new ConcurrentHashMap<>();
+        }
 
         @RuntimeType
         public static Object cache(@SuperCall Callable<Object> superCall, @Origin Method method,
@@ -96,7 +100,7 @@ public class CacheClassDecorator {
         private static boolean cacheExpires(CacheValue cacheValue, Method method) {
             long time = cacheValue.time;
             int cacheSeconds = method.getAnnotation(Cache.class).cacheSeconds();
-            return System.currentTimeMillis() - time > cacheSeconds * 1000;
+            return System.currentTimeMillis() - time > cacheSeconds * 1000L;
         }
     }
 
@@ -105,14 +109,14 @@ public class CacheClassDecorator {
 
         // 有缓存的查询：只有第一次执行了真正的查询操作，第二次从缓存中获取
         System.out.println(dataService.queryData(1));
-        Thread.sleep(1 * 1000);
+        Thread.sleep(1000);
         System.out.println(dataService.queryData(1));
-        Thread.sleep(1 * 3000);
+        Thread.sleep(3000);
         System.out.println(dataService.queryData(1));
 
         // 无缓存的查询：两次都执行了真正的查询操作
         System.out.println(dataService.queryDataWithoutCache(1));
-        Thread.sleep(1 * 1000);
+        Thread.sleep(1000);
         System.out.println(dataService.queryDataWithoutCache(1));
     }
 }
