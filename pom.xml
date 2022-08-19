@@ -109,6 +109,15 @@
                     <argLine>-Dfile.encoding=UTF-8</argLine>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.2.4</version>
+                <configuration>
+                    <url>jdbc:mysql://114.132.161.58:3306/javadb?useSSL=false&amp;characterEncoding=utf-8
+                    </url>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
