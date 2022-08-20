@@ -84,8 +84,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.47</version>
-            <scope>runtime</scope>
+            <version>8.0.17</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -97,6 +96,11 @@
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
             <version>1.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.2</version>
         </dependency>
     </dependencies>
 
@@ -116,6 +120,7 @@
                 <configuration>
                     <url>jdbc:mysql://114.132.161.58:3306/javadb?useSSL=false&amp;characterEncoding=utf-8
                     </url>
+                    <user>root</user>
                 </configuration>
             </plugin>
         </plugins>
