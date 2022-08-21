@@ -4,6 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <properties resource="db.properties"/>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+<!--    为UserMapper里面的返回值设置别名-->
+    <typeAliases>
+        <typeAlias type="com.github.note.o11Mybatis.Sql$User" alias="User"/>
+    </typeAliases>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -17,6 +24,7 @@
         </environment>
     </environments>
     <mappers>
+        <mapper resource="db/mybatis/UserMapper.xml"/>
         <mapper class="com.github.note.o11Mybatis.Sql$UserMapper"/>
     </mappers>
 </configuration>
