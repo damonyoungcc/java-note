@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.note.UserMapper">
+    <select id="selectUser" resultType="User">
+        select *
+        from user
+        where id = #{id}
+          and name = #{name}
+    </select>
+    <select id="selectUserByName" resultType="User">
+        select *
+        from user
+        where name = #{name}
+    </select>
+    <select id="selectIds" resultType="User">
+        SELECT * from user WHERE Id in
+        <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>
